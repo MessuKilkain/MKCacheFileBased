@@ -332,7 +332,11 @@
     NSString* resourceName = [NSString stringWithFormat:@"%@_%@", cacheName, key];
     NSString* filePath = [[NSBundle mainBundle] pathForResource:resourceName ofType:nil];
 //    NSLog(@"get file(%@ at path : %@) from mainBundle for cache(%@) file for key: %@", resourceName, (filePath!=nil?filePath:@"nil"), cacheName, key);
-    if( ![NSString isNilOrEmptyString:filePath] )
+    if(
+       // Not nil nor empty
+       filePath != nil
+       && [[filePath stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] > 0
+       )
     {
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ( [fileManager fileExistsAtPath:filePath] )
