@@ -23,6 +23,7 @@
 // Use of data
 +(void)updateCacheDateForKey:(NSString*)key;
 +(BOOL)doesDataExistForKey:(NSString*)key;
++(NSURL*)localUrlForKey:(NSString*)key;
 +(void)setData:(NSData*)data forKey:(NSString*)key;
 +(void)setDataFromString:(NSString*)string forKey:(NSString*)key;
 +(void)setDataFromString:(NSString*)string forIntegerKey:(NSInteger)key;
@@ -42,6 +43,7 @@
 // Use of data
 +(void)updateCacheDateForKey:(NSString*)key withCachePath:(NSString*)cachePath;
 +(BOOL)doesDataExistForKey:(NSString*)key withCachePath:(NSString*)cachePath;
++(NSURL*)localUrlForKey:(NSString*)key withCachePath:(NSString*)cachePath;
 +(void)setData:(NSData*)data forKey:(NSString*)key withCachePath:(NSString*)cachePath;
 +(void)setDataFromString:(NSString*)string forKey:(NSString*)key withCachePath:(NSString*)cachePath;
 +(void)setDataFromString:(NSString*)string forIntegerKey:(NSInteger)key withCachePath:(NSString*)cachePath;
@@ -70,6 +72,7 @@
 // Use of data
 -(void)updateCacheDateForKey:(NSString*)key;
 -(BOOL)doesDataExistForKey:(NSString*)key;
+-(NSURL*)localUrlForKey:(NSString*)key;
 -(void)setData:(NSData*)data forKey:(NSString*)key;
 -(void)setDataFromString:(NSString*)string forKey:(NSString*)key;
 -(void)setDataFromString:(NSString*)string forIntegerKey:(NSInteger)key;

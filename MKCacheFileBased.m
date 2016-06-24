@@ -61,6 +61,10 @@
 {
     return [self doesDataExistForKey:key withCachePath:[self cacheDirectoryPath]];
 }
++(NSURL*)localUrlForKey:(NSString*)key
+{
+    return [self localUrlForKey:key withCachePath:[self cacheDirectoryPath]];
+}
 +(void)setData:(NSData*)data forKey:(NSString*)key
 {
     [self setData:data forKey:key withCachePath:[self cacheDirectoryPath]];
@@ -204,6 +208,11 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filePath = [cachePath stringByAppendingPathComponent:key];
     return [fileManager fileExistsAtPath:filePath];
+}
++(NSURL*)localUrlForKey:(NSString*)key withCachePath:(NSString*)cachePath
+{
+    NSString *filePath = [cachePath stringByAppendingPathComponent:key];
+    return [NSURL fileURLWithPath:filePath];
 }
 +(void)setData:(NSData*)data forKey:(NSString*)key withCachePath:(NSString*)cachePath
 {
@@ -447,6 +456,10 @@
 -(BOOL)doesDataExistForKey:(NSString*)key
 {
     return [[self class] doesDataExistForKey:key withCachePath:[self cacheDirectoryPath]];
+}
+-(NSURL*)localUrlForKey:(NSString*)key
+{
+    return [[self class] localUrlForKey:key withCachePath:[self cacheDirectoryPath]];
 }
 -(void)setData:(NSData*)data forKey:(NSString*)key
 {
