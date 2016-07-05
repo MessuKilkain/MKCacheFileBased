@@ -403,6 +403,13 @@
     if (self) {
         _cacheDirectoryName = cacheDirectoryName;
         _useCacheValidityDuration = NO;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *cachePath = [self cacheDirectoryPath];
+        BOOL isDir = YES;
+        if( ![fileManager fileExistsAtPath:cachePath isDirectory:&isDir] )
+        {
+            [fileManager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
+        }
     }
     return self;
 }
@@ -414,6 +421,13 @@
         _cacheDirectoryName = cacheDirectoryName;
         _useCacheValidityDuration = YES;
         _cacheValidityDuration = cacheValidityDuration;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *cachePath = [self cacheDirectoryPath];
+        BOOL isDir = YES;
+        if( ![fileManager fileExistsAtPath:cachePath isDirectory:&isDir] )
+        {
+            [fileManager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
+        }
     }
     return self;
 }
